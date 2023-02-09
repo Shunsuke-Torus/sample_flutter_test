@@ -10,16 +10,29 @@ class Comments extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Comments"),
+        title: const Text("Comments Screen"),
       ),
-      body: Center(
-        child: SizedBox(
-          width: 200,
-          child: TextField(
-            decoration: const InputDecoration(hintText: "Hoge"),
-            controller: controller,
+      body: Column(
+        children: [
+          const Text(
+            "11",
+            style: TextStyle(
+              fontSize: 40,
+            ),
+            key: const Key("11"),
           ),
-        ),
+          Align(
+            alignment: Alignment.center,
+            child: SizedBox(
+              width: 200,
+              child: TextField(
+                decoration: const InputDecoration(hintText: "comment"),
+                controller: controller,
+                key: const Key("comment"),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
