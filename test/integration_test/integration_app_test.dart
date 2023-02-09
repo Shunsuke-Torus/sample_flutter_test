@@ -15,9 +15,7 @@ void main() {
       expect(find.text('1'), findsNothing);
       expect(find.byKey(const Key('top_page_msg')), findsOneWidget);
 
-      final Finder inc = find.byTooltip("0");
-      await tester.tap(inc);
-
+      await tester.tap(find.byKey(const Key('top_page_msg')));
       await tester.pumpAndSettle();
       expect(find.text('1'), findsOneWidget);
     });
