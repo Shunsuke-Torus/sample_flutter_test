@@ -35,12 +35,14 @@ void main() {
       expect(find.text('1'), findsOneWidget);
       expect(find.text('0'), findsNothing);
     });
-    testWidgets("2. 追加アイコンを押すとカウントが1つ増加する", (WidgetTester tester) async {
+    testWidgets("2. 追加アイコンを押すとカウントが2つ増加する", (WidgetTester tester) async {
       await tester.pumpWidget(const MyApp());
       await tester.tap(find.byIcon(Icons.add));
       await tester.pump();
-      expect(find.text('1'), findsOneWidget);
-      expect(find.text('0'), findsNothing);
+      await tester.tap(find.byIcon(Icons.add));
+      await tester.pump();
+      expect(find.text('2'), findsOneWidget);
+      expect(find.text('1'), findsNothing);
     });
 
     testWidgets("3. Commentsボタンを押すと画面遷移する", (WidgetTester tester) async {
@@ -51,11 +53,12 @@ void main() {
       await tester.pumpAndSettle();
       // 画面遷移後のウィジェットを確認する｡
       expect(find.text("Comments Screen"), findsOneWidget);
-      expect(find.text("11"), findsOneWidget);
+      expect(find.text("Hello World"), findsOneWidget);
       expect(find.text("comment"), findsOneWidget);
+      expect(find.byKey(const Key("hello_world")), findsOneWidget);
     });
 
-    testWidgets("3. Comment画面にて文字入力をする", (WidgetTester tester) async {
+    testWidgets("4. Comment画面にて文字入力をする", (WidgetTester tester) async {
       await tester.pumpWidget(const MyApp());
       // ボタンをクリックして画面遷移する
       await tester.tap(find.byKey(const Key('top_page_comments_button')));
