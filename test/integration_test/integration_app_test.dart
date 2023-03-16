@@ -41,7 +41,7 @@ void main() {
       await tester.pumpAndSettle();
       // 画面遷移後のウィジェットを確認する｡
       expect(find.text("Comments Screen"), findsOneWidget);
-      expect(find.text("11"), findsOneWidget);
+      expect(find.text("Hello World"), findsOneWidget);
       expect(find.text("comment"), findsOneWidget);
     });
 
